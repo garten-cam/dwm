@@ -28,6 +28,8 @@ static const Rule rules[] = {
      */
     /* class      instance    title       tags mask     isfloating   monitor
        scratch key */
+    {"Gimp", NULL, NULL, 0, 1, -1, 0},
+    {"firefox", NULL, NULL, 1 << 8, 0, -1, 0},
     // {NULL, NULL, "scratchpad", 0, 1, -1, 'a'},
 		{"qutebrowser", NULL, NULL, 0, 1, -1, 'q'}
 };
@@ -79,7 +81,7 @@ static const Key keys[] = {
     /* modifier                     key        function        argument */
     {MODKEY, XK_p, spawn, {.v = dmenucmd}},
     {MODKEY, XK_Return, spawn, {.v = termcmd}},
-    {MODKEY, XK_w, togglescratch, {.v = scratchpadcmd[0]}},
+    {MODKEY, XK_w, togglescratch, {.v = scratchpadcmd}},
     {MODKEY, XK_b, togglebar, {0}}, {MODKEY, XK_j, focusstack, {.i = +1}},
     {MODKEY, XK_k, focusstack, {.i = -1}},
     {MODKEY | ShiftMask, XK_period, incnmaster, {.i = +1}},
