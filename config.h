@@ -31,7 +31,7 @@ static const Rule rules[] = {
     {"Gimp", NULL, NULL, 0, 1, -1, 0},
     {"firefox", NULL, NULL, 1 << 8, 0, -1, 0},
     // {NULL, NULL, "scratchpad", 0, 1, -1, 'a'},
-	  {"qutebrowser", NULL, NULL, 0, 1, -1, 'q'},
+    {"qutebrowser", NULL, NULL, 0, 1, -1, 'q'},
 };
 
 /* layout(s) */
@@ -72,7 +72,7 @@ static const char *dmenucmd[] = {
 static const char *termcmd[] = {"kitty", NULL};
 
 /*First arg only serves to match against key in rules*/
-static const char *scratchpadcmd[] = {"q", "qutebrowse", NULL};
+static const char *scratchpadcmd[] = {"q", "qutebrowser", NULL};
 
 static const Key keys[] = {
     /* modifier                     key        function        argument */
@@ -102,8 +102,7 @@ static const Key keys[] = {
     {MODKEY | ShiftMask, XK_period, tagmon, {.i = +1}},
     TAGKEYS(XK_1, 0) TAGKEYS(XK_2, 1) TAGKEYS(XK_3, 2) TAGKEYS(XK_4, 3)
         TAGKEYS(XK_5, 4) TAGKEYS(XK_6, 5) TAGKEYS(XK_7, 6) TAGKEYS(XK_8, 7)
-            TAGKEYS(XK_9, 8)
-		{MODKEY | ShiftMask, XK_q, quit, {0}},
+            TAGKEYS(XK_9, 8){MODKEY | ShiftMask, XK_q, quit, {0}},
 };
 
 /* button definitions */
