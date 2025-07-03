@@ -29,7 +29,7 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor	scratch key    float x,y,w,h         floatborderpx*/
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1,        0,					 50,50,500,500,        5 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1,        0,					 50,50,500,500,        5 },
-        {"qutebrowser", NULL, NULL, 0, 1, -1, 'q',	192,108, 1536, 864,   5},
+  {"qutebrowser", NULL, NULL, 0, 1, -1, 'q',	192,108, 1536, 864,   5},
 };
 
 /* layout(s) */
@@ -46,7 +46,7 @@ static const Layout layouts[] = {
 };
 
 /* key definitions */
-#define MODKEY Mod1Mask
+#define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
