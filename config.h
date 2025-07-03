@@ -26,12 +26,15 @@ static const Rule rules[] = {
      *	WM_CLASS(STRING) = instance, class
      *	WM_NAME(STRING) = title
      */
-    /* class      instance    title       tags mask     isfloating   monitor	scratch key    float x,y,w,h	floatborderpx*/
+    /* class      instance    title       tags mask     isfloating   monitor
+
+       scratch key    float x,y,w,h	floatborderpx*/
     // {"Gimp", NULL, NULL, 0, 1, -1, 0, 50, 50, 500, 500, 5},
     // {"Firefox", NULL, NULL, 1 << 8, 0, -1, 0, 50, 50, 500, 500, 5},
-    {"qutebrowser", NULL, NULL, 0, 1, -1, 'q', 192, 108, 1536, 864, 5},
-		{NULL,          NULL, "vaults", 0, 1, -1, 'y', 192, 108, 1536, 864, 5},
-};
+    {
+        "qu , NULL, NULL, 0, 1, -1, 'q', 192, 108, 1536, 864, 5},
+        {NULL, NULL, "vaults", 0, 1, -1, 'y', 192, 108, 1536, 864, 5},
+    };
 
 /* layout(s) */
 static const float mfact = 0.55; /* factor of master area size [0.05..0.95] */
@@ -72,14 +75,14 @@ static const char *termcmd[] = {"kitty", NULL};
 
 /*First arg only serves to match against key in rules*/
 static const char *scratchpadcmd[] = {"q", "qutebrowser", NULL};
-static const char *scratchpadvlt[] = {"y", "kitty", "-T", "vaults", NULL}
+static const char *scratchpadvlt[] = {"y", "kitty", "-T", "vaults", NULL};
 
 static const Key keys[] = {
     /* modifier                     key        function        argument */
     {MODKEY, XK_p, spawn, {.v = dmenucmd}},
     {MODKEY, XK_Return, spawn, {.v = termcmd}},
     {MODKEY, XK_w, togglescratch, {.v = scratchpadcmd}},
-		{MODKEY, XK_y, togglescratch, {.v = scratchpadvlt}},
+    {MODKEY, XK_y, togglescratch, {.v = scratchpadvlt}},
     {MODKEY, XK_b, togglebar, {0}},
     {MODKEY, XK_j, focusstack, {.i = +1}},
     {MODKEY, XK_k, focusstack, {.i = -1}},
