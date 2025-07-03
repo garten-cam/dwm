@@ -118,7 +118,7 @@ struct Client {
   int bw, oldbw;
   unsigned int tags;
   int isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen;
-	int floatborderpx;
+  int floatborderpx;
   char scratchkey;
   Client *next;
   Client *snext;
@@ -166,8 +166,8 @@ typedef struct {
   unsigned int tags;
   int isfloating;
   int monitor;
-	int floatx, floaty, floatw, floath;
-	int floatborderpx;
+  int floatx, floaty, floatw, floath;
+  int floatborderpx;
   const char scratchkey;
 } Rule;
 
@@ -260,6 +260,7 @@ static void updatetitle(Client *c);
 static void updatewindowtype(Client *c);
 static void updatewmhints(Client *c);
 static void view(const Arg *arg);
+static void cycleview(const Arg *arg);
 static Client *wintoclient(Window w);
 static Monitor *wintomon(Window w);
 static int xerror(Display *dpy, XErrorEvent *ee);
@@ -331,13 +332,13 @@ void applyrules(Client *c) {
         (!r->instance || strstr(instance, r->instance))) {
       c->isfloating = r->isfloating;
       c->tags |= r->tags;
-			c->floatborderpx = r->floatborderpx;
-			if (r->isfloating) {
-				c->x = r->floatx;
-				c->y = r->floaty;
-				c->w = r->floatw;
-				c->h = r->floath;
-			}
+      c->floatborderpx = r->floatborderpx;
+      if (r->isfloating) {
+        c->x = r->floatx;
+        c->y = r->floaty;
+        c->w = r->floatw;
+        c->h = r->floath;
+      }
       c->scratchkey = r->scratchkey;
       for (m = mons; m && m->num != r->monitor; m = m->next)
         ;
@@ -2009,6 +2010,20 @@ void updatewmhints(Client *c) {
       c->neverfocus = 0;
     XFree(wmh);
   }
+}
+
+void cycleview(const Arg *arg) {
+	 unsigned int newtag ;
+	if (arg->ui) { /* if ui is 1 goto the left if 0 goto the right */
+	    newtag = selmon->tagset[selmon->seltags] >> 1;
+	    if (newtag == 0) newtag = (1 << (LENGTH(tags) - 1));
+	}
+	else{
+	    newtag = selmon->tagset[selmon->seltags] << 1;
+	    if (newtag > ( 1 << (LENGTH(tags) - 1))) newtag = 1;
+	}
+    Arg a = { .ui = newtag};
+    view(&a);
 }
 
 void view(const Arg *arg) {
