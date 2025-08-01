@@ -1,7 +1,6 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-// #include <cstddef>
 static const unsigned int borderpx = 1; /* border pixel of windows */
 static const unsigned int snap = 32;    /* snap pixel */
 static const int showbar = 1;           /* 0 means no bar */
@@ -76,6 +75,7 @@ static const char *micmt[] = {"amixer", "set", "Capture", "toggle", NULL};
 static const char *arand[] = {"arandr", NULL};
 static const char *brgup[] = {"brightnessctl", "set", "5%+", NULL};
 static const char *brgdw[] = {"brightnessctl", "set", "5%-", NULL};
+static const char *rofid[] = {"rofi", "-show", "drun", NULL};
 
 /*First arg only serves to match against key in rules*/
 static const char *scratchpadcmd[] = {"q", "qutebrowser", NULL};
@@ -85,6 +85,7 @@ static const Key keys[] = {
     /* modifier                     key        function        argument */
     {MODKEY, XK_p, spawn, {.v = dmenucmd}},
     {MODKEY, XK_Return, spawn, {.v = termcmd}},
+    {MODKEY, XK_o, spawn, {.v = rofid}},
     {MODKEY, XK_w, togglescratch, {.v = scratchpadcmd}},
     {MODKEY, XK_y, togglescratch, {.v = scratchpadvlt}},
     {MODKEY, XK_b, togglebar, {0}},
