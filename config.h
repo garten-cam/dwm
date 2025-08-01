@@ -1,6 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
+// #include <cstddef>
 static const unsigned int borderpx = 1; /* border pixel of windows */
 static const unsigned int snap = 32;    /* snap pixel */
 static const int showbar = 1;           /* 0 means no bar */
@@ -26,11 +27,10 @@ static const Rule rules[] = {
      *	WM_CLASS(STRING) = instance, class
      *	WM_NAME(STRING) = title
      */
-    /* class      instance    title       tags mask     isfloating   monitor	scratch key    float x,y,w,h	floatborderpx*/
-    // {"Gimp", NULL, NULL, 0, 1, -1, 0, 50, 50, 500, 500, 5},
-    // {"Firefox", NULL, NULL, 1 << 8, 0, -1, 0, 50, 50, 500, 500, 5},
+    /* class      instance    title       tags mask     isfloating   monitor
+       scratch key    float x,y,w,h	floatborderpx*/
     {"qutebrowser", NULL, NULL, 0, 1, -1, 'q', 192, 108, 1536, 864, 5},
-		{NULL,          NULL, "vaults", 0, 1, -1, 'y', 192, 108, 1536, 864, 5},
+    {NULL, NULL, "vaults", 0, 1, -1, 'y', 192, 108, 1536, 864, 5},
 };
 
 /* layout(s) */
@@ -69,6 +69,13 @@ static const char *dmenucmd[] = {
     "dmenu_run", "-m",      dmenumon, "-fn",    dmenufont, "-nb",     col_gray1,
     "-nf",       col_gray3, "-sb",    col_cyan, "-sf",     col_gray4, NULL};
 static const char *termcmd[] = {"kitty", NULL};
+static const char *volup[] = {"amixer", "set", "Master", "5%+", NULL};
+static const char *voldw[] = {"amixer", "set", "Master", "5%-", NULL};
+static const char *voltg[] = {"amixer", "set", "Master", "toggle", NULL};
+static const char *micmt[] = {"amixer", "set", "Capture", "toggle", NULL};
+static const char *arand[] = {"arandr", NULL};
+static const char *brgup[] = {"brightnessctl", "set", "5%+", NULL};
+static const char *brgdw[] = {"brightnessctl", "set", "5%-", NULL};
 
 /*First arg only serves to match against key in rules*/
 static const char *scratchpadcmd[] = {"q", "qutebrowser", NULL};
@@ -79,17 +86,17 @@ static const Key keys[] = {
     {MODKEY, XK_p, spawn, {.v = dmenucmd}},
     {MODKEY, XK_Return, spawn, {.v = termcmd}},
     {MODKEY, XK_w, togglescratch, {.v = scratchpadcmd}},
-		{MODKEY, XK_y, togglescratch, {.v = scratchpadvlt}},
+    {MODKEY, XK_y, togglescratch, {.v = scratchpadvlt}},
     {MODKEY, XK_b, togglebar, {0}},
     {MODKEY, XK_j, focusstack, {.i = +1}},
     {MODKEY, XK_k, focusstack, {.i = -1}},
-		{MODKEY, XK_Right,      cycleview,      {0} },
-		{MODKEY, XK_Left,      cycleview,      {1} },
+    {MODKEY, XK_Right, cycleview, {0}},
+    {MODKEY, XK_Left, cycleview, {1}},
     {MODKEY | ShiftMask, XK_period, incnmaster, {.i = +1}},
     {MODKEY | ShiftMask, XK_comma, incnmaster, {.i = -1}},
     {MODKEY, XK_h, setmfact, {.f = -0.05}},
     {MODKEY, XK_l, setmfact, {.f = +0.05}},
-    // { MODKEY,                       XK_Return, zoom,           {0} },
+    {MODKEY | ShiftMask, XK_Return, zoom, {0}},
     {MODKEY, XK_Tab, view, {0}},
     {MODKEY, XK_q, killclient, {0}},
     {MODKEY, XK_t, setlayout, {.v = &layouts[0]}},
@@ -106,6 +113,13 @@ static const Key keys[] = {
     TAGKEYS(XK_1, 0) TAGKEYS(XK_2, 1) TAGKEYS(XK_3, 2) TAGKEYS(XK_4, 3)
         TAGKEYS(XK_5, 4) TAGKEYS(XK_6, 5) TAGKEYS(XK_7, 6) TAGKEYS(XK_8, 7)
             TAGKEYS(XK_9, 8){MODKEY | ShiftMask, XK_q, quit, {0}},
+    {0, XF86XK_AudioRaiseVolume, spawn, {.v = volup}},
+    {0, XF86XK_AudioLowerVolume, spawn, {.v = voldw}},
+    {0, XF86XK_AudioMute, spawn, {.v = voltg}},
+    {0, XF86XK_AudioMicMute, spawn, {.v = micmt}},
+    {0, XF86XK_Display, spawn, {.v = arand}},
+    {0, XF86XK_MonBrightnessUp, spawn, {.v = brgup}},
+    {0, XF86XK_MonBrightnessDown, spawn, {.v = brgdw}},
 };
 
 /* button definitions */

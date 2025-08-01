@@ -20,6 +20,7 @@
  *
  * To understand everything else, start reading main().
  */
+#include <X11/XF86keysym.h>
 #include <X11/Xatom.h>
 #include <X11/Xlib.h>
 #include <X11/Xproto.h>
@@ -166,7 +167,7 @@ typedef struct {
   unsigned int tags;
   int isfloating;
   int monitor;
-	const char scratchkey;
+  const char scratchkey;
   int floatx, floaty, floatw, floath;
   int floatborderpx;
 } Rule;
