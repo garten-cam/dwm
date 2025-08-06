@@ -27,12 +27,12 @@ static const Rule rules[] = {
      *	WM_CLASS(STRING) = instance, class
      *	WM_NAME(STRING) = title
      */
-    /* class      instance    title       tags mask     isfloating   monitor
+    /* class      instance    title       tags mask    iscentered     isfloating   monitor
        scratch key    float x,y,w,h	floatborderpx*/
-    {"qutebrowser", NULL, NULL, 0, 1, -1, 'q', 192, 108, 1536, 864, 5},
-    {NULL, NULL, "vaults", 0, 1, -1, 'y', 192, 108, 1536, 864, 5},
-    {NULL, NULL, "pdfs", 0, 1, -1, 'i', 192, 108, 1536, 864, 5},
-    {NULL, NULL, "paper", 0, 1, -1, 'u', 192, 108, 1536, 864, 5},
+    {"qutebrowser", NULL, NULL, 0, 1, 1, -1, 'q', 192, 108, 1536, 864, 5},
+    {NULL, NULL, "vaults", 0, 1, 1, -1, 'y', 192, 108, 1536, 864, 5},
+    {NULL, NULL, "pdfs", 0, 1, 1, -1, 'i', 192, 108, 1536, 864, 5},
+    {NULL, NULL, "paper", 0, 1, 1, -1, 'u', 192, 108, 1536, 864, 5},
 };
 
 /* layout(s) */
