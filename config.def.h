@@ -12,7 +12,7 @@ static const char col_gray1[] = "#222222";
 static const char col_gray2[] = "#444444";
 static const char col_gray3[] = "#bbbbbb";
 static const char col_gray4[] = "#eeeeee";
-static const char col_cyan[] = "#005577";
+static const char col_cyan[] = "#82aaFF";
 static const char *colors[][3] = {
     /*               fg         bg         border   */
     [SchemeNorm] = {col_gray3, col_gray1, col_gray2},
@@ -31,6 +31,8 @@ static const Rule rules[] = {
        scratch key    float x,y,w,h	floatborderpx*/
     {"qutebrowser", NULL, NULL, 0, 1, -1, 'q', 192, 108, 1536, 864, 5},
     {NULL, NULL, "vaults", 0, 1, -1, 'y', 192, 108, 1536, 864, 5},
+    {NULL, NULL, "pdfs", 0, 1, -1, 'i', 192, 108, 1536, 864, 5},
+    {NULL, NULL, "paper", 0, 1, -1, 'u', 192, 108, 1536, 864, 5},
 };
 
 /* layout(s) */
@@ -81,6 +83,10 @@ static const char *rofid[] = {"rofi", "-show", "drun", NULL};
 /*First arg only serves to match against key in rules*/
 static const char *scratchpadcmd[] = {"q", "qutebrowser", NULL};
 static const char *scratchpadvlt[] = {"y", "kitty", "-T", "vaults", NULL};
+static const char *scratchpadpdf[] = {"i",  "kitty", "-T", "pdfs",
+                                      "-e", "yazi",  NULL};
+static const char *scratchpadppr[] = {"u",  "kitty",        "-T", "paper",
+                                      "-d", "~/Documents/", NULL};
 
 static const Key keys[] = {
     /* modifier                     key        function        argument */
@@ -89,6 +95,8 @@ static const Key keys[] = {
     {MODKEY, XK_o, spawn, {.v = rofid}},
     {MODKEY, XK_w, togglescratch, {.v = scratchpadcmd}},
     {MODKEY, XK_y, togglescratch, {.v = scratchpadvlt}},
+    {MODKEY, XK_i, togglescratch, {.v = scratchpadpdf}},
+    {MODKEY, XK_u, togglescratch, {.v = scratchpadppr}},
     {MODKEY, XK_b, togglebar, {0}},
     {MODKEY, XK_j, focusstack, {.i = +1}},
     {MODKEY, XK_k, focusstack, {.i = -1}},
