@@ -6,8 +6,8 @@ static const unsigned int gappx = 4;    /*     between windows */
 static const unsigned int snap = 32;    /* snap pixel */
 static const int showbar = 1;           /* 0 means no bar */
 static const int topbar = 1;            /* 0 means bottom bar */
-static const char *fonts[] = {"monospace:size=10"};
-static const char dmenufont[] = "monospace:size=10";
+static const char *fonts[] = {"Iosevka NF:size=10:style=Oblique"};
+static const char dmenufont[] = "Iosevka NF:size=10:style=Oblique";
 static const char col_gray1[] = "#222222";
 static const char col_gray2[] = "#444444";
 static const char col_gray3[] = "#bbbbbb";
@@ -22,6 +22,19 @@ static const char *colors[][3] = {
 /* tagging */
 static const char *tags[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
+//static const Rule rules[] = {
+//    /* xprop(1):
+//     *	WM_CLASS(STRING) = instance, class
+//     *	WM_NAME(STRING) = title
+//     */
+//    /* class      instance    title       tags mask    iscentered     isfloating
+//       monitor scratch key    float x,y,w,h	floatborderpx*/
+//    {"qutebrowser", NULL, NULL, 0, 1, 1, -1, 'w', 5, 5, 2304, 1440, 5},
+//    {NULL, NULL, "vaults", 0, 1, 1, -1, 'y', 192, 108, 2304, 1440, 5},
+//    {NULL, NULL, "pdfs", 0, 1, 1, -1, 'i', 192, 108, 2304, 1440, 5},
+//    {NULL, NULL, "paper", 0, 1, 1, -1, 'u', 192, 108, 2304, 1440, 5},
+//};
+
 static const Rule rules[] = {
     /* xprop(1):
      *	WM_CLASS(STRING) = instance, class
@@ -29,10 +42,10 @@ static const Rule rules[] = {
      */
     /* class      instance    title       tags mask    iscentered     isfloating
        monitor scratch key    float x,y,w,h	floatborderpx*/
-    {"qutebrowser", NULL, NULL, 0, 1, 1, -1, 'q', 192, 108, 1728, 972, 5},
-    {NULL, NULL, "vaults", 0, 1, 1, -1, 'y', 192, 108, 1536, 864, 5},
-    {NULL, NULL, "pdfs", 0, 1, 1, -1, 'i', 192, 108, 1536, 864, 5},
-    {NULL, NULL, "paper", 0, 1, 1, -1, 'u', 192, 108, 1536, 864, 5},
+    {"qutebrowser", NULL, NULL, 0, 1, 1, -1, 'w', 5, 5, 1870, 1020, 5},
+    {NULL, NULL, "vaults", 0, 1, 1, -1, 'y', 192, 108, 1870, 1020, 5},
+    {NULL, NULL, "pdfs", 0, 1, 1, -1, 'i', 192, 108, 1870, 1020, 5},
+    {NULL, NULL, "paper", 0, 1, 1, -1, 'u', 192, 108, 1870, 1020, 5},
 };
 
 /* layout(s) */
@@ -81,7 +94,8 @@ static const char *brgdw[] = {"brightnessctl", "set", "5%-", NULL};
 static const char *rofid[] = {"rofi", "-show", "drun", NULL};
 
 /*First arg only serves to match against key in rules*/
-static const char *scratchpadcmd[] = {"q", "qutebrowser", NULL};
+/*static const char *scratchpadbrw[] = {"w", "zen-browser", "--class=zen-scratchpad", "--no-remote", NULL};*/
+static const char *scratchpadbrw[] = {"w", "qutebrowser", NULL};
 static const char *scratchpadvlt[] = {"y", "kitty", "-T", "vaults", NULL};
 static const char *scratchpadpdf[] = {"i",  "kitty", "-T", "pdfs",
                                       "-e", "yazi",  NULL};
@@ -93,7 +107,7 @@ static const Key keys[] = {
     {MODKEY, XK_p, spawn, {.v = dmenucmd}},
     {MODKEY, XK_Return, spawn, {.v = termcmd}},
     {MODKEY, XK_o, spawn, {.v = rofid}},
-    {MODKEY, XK_w, togglescratch, {.v = scratchpadcmd}},
+    {MODKEY, XK_w, togglescratch, {.v = scratchpadbrw}},
     {MODKEY, XK_y, togglescratch, {.v = scratchpadvlt}},
     {MODKEY, XK_i, togglescratch, {.v = scratchpadpdf}},
     {MODKEY, XK_u, togglescratch, {.v = scratchpadppr}},
