@@ -1,0 +1,13 @@
+# Object files
+*.o
+
+# Compiled binaries and executables
+dmenu
+stest
+
+# Generated scripts (suckless build outputs)
+dmenu_path
+dmenu_run
+
+# Local configuration file (generated from config.def.h)
+config.h
