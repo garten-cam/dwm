@@ -6,13 +6,13 @@ static const unsigned int gappx = 4;    /*     between windows */
 static const unsigned int snap = 32;    /* snap pixel */
 static const int showbar = 1;           /* 0 means no bar */
 static const int topbar = 1;            /* 0 means bottom bar */
-static const char *fonts[] = {"monospace:size=10"};
-static const char dmenufont[] = "monospace:size=10";
-static const char col_gray1[] = "#222222";
-static const char col_gray2[] = "#444444";
-static const char col_gray3[] = "#bbbbbb";
-static const char col_gray4[] = "#eeeeee";
-static const char col_cyan[] = "#82aaFF";
+static const char *fonts[] = {"Iosevka-Term-Oblique:size=10"};
+static const char dmenufont[] = "Iosevka-Term-Oblique:size=10";
+static const char col_gray1[] = "#1e1e2e";
+static const char col_gray2[] = "#6c7086";
+static const char col_gray3[] = "#a6adc8";
+static const char col_gray4[] = "#bac2de";
+static const char col_cyan[] = "#89b4fa";
 static const char *colors[][3] = {
     /*               fg         bg         border   */
     [SchemeNorm] = {col_gray3, col_gray1, col_gray2},
@@ -29,10 +29,10 @@ static const Rule rules[] = {
      */
     /* class      instance    title       tags mask    iscentered     isfloating
        monitor scratch key    float x,y,w,h	floatborderpx*/
-    {"qutebrowser", NULL, NULL, 0, 1, 1, -1, 'q', 192, 108, 1728, 972, 5},
-    {NULL, NULL, "vaults", 0, 1, 1, -1, 'y', 192, 108, 1536, 864, 5},
-    {NULL, NULL, "pdfs", 0, 1, 1, -1, 'i', 192, 108, 1536, 864, 5},
-    {NULL, NULL, "paper", 0, 1, 1, -1, 'u', 192, 108, 1536, 864, 5},
+    {"qutebrowser", NULL, NULL, 0, 1, 1, -1, 'q', 192, 108, 1824, 1140, 5},
+    {NULL, NULL, "vaults", 0, 1, 1, -1, 'y', 192, 108, 1824, 1140, 5},
+    {NULL, NULL, "pdfs", 0, 1, 1, -1, 'i', 192, 108, 1824, 1140, 5},
+    {NULL, NULL, "paper", 0, 1, 1, -1, 'u', 192, 108, 1824, 1140, 5},
 };
 
 /* layout(s) */
@@ -79,6 +79,7 @@ static const char *arand[] = {"arandr", NULL};
 static const char *brgup[] = {"brightnessctl", "set", "5%+", NULL};
 static const char *brgdw[] = {"brightnessctl", "set", "5%-", NULL};
 static const char *rofid[] = {"rofi", "-show", "drun", NULL};
+static const char *lockcmd[] = {"slock", NULL};
 
 /*First arg only serves to match against key in rules*/
 static const char *scratchpadcmd[] = {"q", "qutebrowser", NULL};
@@ -109,6 +110,7 @@ static const Key keys[] = {
     {MODKEY | ShiftMask, XK_Return, zoom, {0}},
     {MODKEY, XK_Tab, view, {0}},
     {MODKEY, XK_q, killclient, {0}},
+		{MODKEY | ShiftMask, XK_l, spawn, {.v = lockcmd}},
     {MODKEY, XK_t, setlayout, {.v = &layouts[0]}},
     {MODKEY, XK_f, setlayout, {.v = &layouts[1]}},
     {MODKEY, XK_m, setlayout, {.v = &layouts[2]}},
